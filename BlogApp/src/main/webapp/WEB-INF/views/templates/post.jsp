@@ -1,5 +1,4 @@
 
-
 <c:forEach items="${postList}" var="item">
 	<div class="panel panel-default">
 		
@@ -9,9 +8,10 @@
 				<!-- Title -->
 				<h4>
 					<strong> <span class="black">
-						${item.name}
+						${item.name}</span>
 					</strong>
-				</h4>
+				</h4> 
+				</h3>
 		</div>
 		<div class="panel-body">
 			<!-- Blog Post -->
@@ -32,7 +32,6 @@
 						${item.postText}
 					</strong>
 					<a href="<c:url value="/findOneById/${item.id}" ></c:url>"> Devamini Oku..   </a>
-
 		</div>
 	</div>
 </c:forEach>

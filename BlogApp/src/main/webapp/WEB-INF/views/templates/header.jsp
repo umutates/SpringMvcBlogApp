@@ -7,7 +7,7 @@
 			id="bs-example-navbar-collapse-1">
 			<div class="navbar-header">
 				<ul class="nav navbar-nav">
-					<li><a href="<c:url value="/index/"></c:url>">Home</a></li>
+					<li><a href="<c:url value="/"></c:url>">Home</a></li>
 					<li><a href="#">Hakkımda</a></li>
 					<li><a href="#">ILetisim</a></li>
 					<li><a href="<c:url value="/post/add"></c:url>">PostAdd</a></li>

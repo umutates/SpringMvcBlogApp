@@ -50,13 +50,54 @@
 												src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 </head>
 
-<body>
-	<%@ include file="templates/header.jsp"%>
-	<br> </br>
+
+<body data-spy="scroll" data-offset="0" data-target="#navbar-main">
+
+
+	<div id="navbar-main">
+		<!-- Fixed navbar -->
+		<div class="navbar navbar-inverse navbar-fixed-top">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse"
+						data-target=".navbar-collapse">
+						<span class="icon icon-shield"
+							style="font-size: 30px; color: #3498db;"></span>
+					</button>
+					<a class="navbar-brand hidden-xs hidden-sm" href="#home"><span
+						class="icon icon-shield" style="font-size: 18px; color: #3498db;"></span></a>
+				</div>
+				<div class="navbar-collapse collapse">
+					<ul class="nav navbar-nav">
+						<li><a href="#headerwrap" class="smoothScroll">Home</a></li>
+						<li><a href="#about" class="smoothScroll"> About</a></li>
+
+						<li><a href="#blog" class="smoothScroll"> Blog</a></li>
+						<li><a href="#contact" class="smoothScroll"> Contact</a></li>
+						<li><a href="post/postList" class="smoothScroll">Admin</a></li>
+				</div>
+				<!--/.nav-collapse -->
+			</div>
+		</div>
+	</div>
 
 
 
-	<section class="section-divider textdivider divider3">
+	<!-- ==== HEADERWRAP ==== -->
+	<div class="container" id="headerwrap" name="home">
+		<header class="clearfix">
+		<h1>
+			<span class="icon icon-shield"></span>
+		</h1>
+		<p>Umut Ates</p>
+		<p>Blog</p>
+		</header>
+	</div>
+	<!-- /headerwrap -->
+
+
+
+<section class="section-divider textdivider divider3">
 	<div class="container">
 
 		<div class="row">
@@ -65,13 +106,7 @@
 			<div class="col-lg-8">
 
 				<%@ include file="templates/post.jsp"%>
-			
-				
-
 			</div>
-
-			
-
 			<!-- Blog Sidebar Widgets Column -->
 			<div class="col-md-4">
 
@@ -89,7 +124,7 @@
 					<!-- /.input-group -->
 
 				</div>
-				<
+			
 
 				<%@ include file="templates/category.jsp"%>
 
@@ -103,13 +138,51 @@
 
 			</div>
 
-		</div>
+		</div> 
 		<!-- /.row -->
 
-		<hr>
-
-			<%@ include file="templates/footer.jsp"%>
-	</div>
+	
+</div>
+	<!-- /.container --> <!-- jQuery --> <script
+		src="<link href="${pageContext.request.contextPath}/resources/js/jquery.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="<link href="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
+<script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+    </script>
+	<br></br>
+	<br></br>
+	<section class="section-divider textdivider divider7
+	">
+	<div class="container" id="about" name="about">
+		<br>
+			<div class="container">
+				<h1 class="centered">Profile</h1>
+				<hr>
+					<br> <br>
+							<div class="row white centered">
+								<img class="img img-circle"
+									src="${pageContext.request.contextPath}/resources/assets/img/team/team01.jpg"
+									height="120px" width="120px" alt=""> <br>
+										<h4 style="color: white">
+											<b>Umut Ates</b>
+										</h4> <a href="http://twitter.com/ttamttamm"
+										class="icon icon-twitter"></a> <a
+										href="http://facebook.com/umutatesss"
+										img="<a href="#" class="icon icon-facebook"></a>
+					<a href="https://www.linkedin.com/profile/view?id=AAIAAAvE3owBknuepG-frfEDlsZIBdj2V-92pno&trk=nav_responsive_tab_profile">
+					<img class="img img-circle" src="${pageContext.request.contextPath}/resources/assets/img/chrome_linkedin.png" height="40px" width="40px" alt="" >
+					</a>
+					
+					
+				</div><!-- col-lg-3 -->
+	
+	
+	
+	
 	<!-- /.container --> <!-- jQuery --> <script
 		src="<link href="${pageContext.request.contextPath}/resources/js/jquery.js"></script>
     <!-- Bootstrap Core JavaScript -->

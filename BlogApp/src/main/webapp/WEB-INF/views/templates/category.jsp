@@ -9,10 +9,7 @@
 					<img class="img img-circle" src="${pageContext.request.contextPath}/resources/assets/img/chrome_linkedin.png" height="40px" width="40px" alt="" >
 					</a>
 				</div><!-- col-lg-3 -->
-
-
 <!-- Kategorilerim-->
-
 <div class="menu">
 	<div class="menu-category list-group ">
 		<div class="menu-category-name list-group-item active">
@@ -26,13 +23,11 @@
 		</c:forEach>
 	</div>
 </div>
-
 <!-- Sosyal Bağlantıalrı Alanı -->
 <div class="menu">
 	<div class="menu-category list-group ">
 		<div class="menu-category-name list-group-item active">
 			<i class="icon-list"></i> Ek alan
 		</div>
-
 	</div>
 </div>
