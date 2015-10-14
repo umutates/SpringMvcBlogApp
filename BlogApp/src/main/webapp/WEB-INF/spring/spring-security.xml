@@ -1,0 +1,28 @@
+<beans:beans xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.springframework.org/schema/security"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/security
+		http://www.springframework.org/schema/security/spring-security.xsd">
+
+	<!-- Security Configuration -->
+	<http auto-config="true" use-expressions="true">
+		<!-- <intercept-url pattern="/post/postList" access="hasRole('USER')" /> -->
+		<form-login login-processing-url="/login" login-page="/login"
+			default-target-url="/" />
+		<logout logout-url="/logout" logout-success-url="/" />
+		<csrf disabled="true" />
+	</http>
+	<!-- Login Credentials -->
+	<!-- Select users and user_roles from database -->
+
+
+
+
+	<beans:bean id="authenticationService" class="com.blog.base.service.AuthenticationService" />
+	<authentication-manager>
+		<authentication-provider user-service-ref="authenticationService">
+		</authentication-provider>
+	</authentication-manager>
+
+</beans:beans>
