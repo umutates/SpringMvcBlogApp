@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Version;
 @Entity
 public class Post {
 	@Id
@@ -22,6 +23,9 @@ public class Post {
 	
 	@ManyToOne
 	private Category category;
+	
+	@Version
+	Long version;
 	
 	
 	

@@ -147,15 +147,12 @@ public class PostController {
 	}
 
 	@RequestMapping(value = "/edit/{postId}", method = RequestMethod.POST)
-	public String postEdit(@PathVariable Long postId, @ModelAttribute("form") Post post) {
-		Post postChange = postService.findOneById(postId);
+	public String postEdit(@PathVariable Long postId, @ModelAttribute("form") Post postChange) {
+
 		logger.info("aaaaaaaaaaaaaaaaaaaaaaaaaaaaa"+postChange.getName());
-		if (!postChange.equals(null)) {
-			postService.Delete(postChange);
-			
-			postChange = post;
-			postService.Save(postChange);
-		}
+
+			postService.editPost(postId,postChange);
+	
 
 		return "redirect:/post/postList";
 	}

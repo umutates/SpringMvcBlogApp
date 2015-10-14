@@ -1,22 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
 <%@page
 	import="org.hibernate.hql.internal.ast.util.ASTUtil.IncludePredicate"%>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
 <%@ page session="false"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<html lang="tr">
 <head>
+<meta charset="utf-8">
 
-<title></title>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-			<meta name="description" content="">
-				<meta name="author" content="UMUT">
-
-					<title>Blog Post - Start Bootstrap Template</title> <!-- Bootstrap core CSS -->
+					
 					<link
 						href="${pageContext.request.contextPath}/resources/assets/css/bootstrap.css"
 						rel="stylesheet">
@@ -32,12 +28,6 @@
 									rel="stylesheet">
 
 
-									<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-									<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-									<!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
 									<title>Bootstrap Example</title>
 
 									<meta name="viewport"
@@ -54,59 +44,39 @@
 <body data-spy="scroll" data-offset="0" data-target="#navbar-main">
 
 
-	<div id="navbar-main">
-		<!-- Fixed navbar -->
-		<div class="navbar navbar-inverse navbar-fixed-top">
-			<div class="container">
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle" data-toggle="collapse"
-						data-target=".navbar-collapse">
-						<span class="icon icon-shield"
-							style="font-size: 30px; color: #3498db;"></span>
-					</button>
-					<a class="navbar-brand hidden-xs hidden-sm" href="#home"><span
-						class="icon icon-shield" style="font-size: 18px; color: #3498db;"></span></a>
-				</div>
-				<div class="navbar-collapse collapse">
-					<ul class="nav navbar-nav">
-						<li><a href="#headerwrap" class="smoothScroll">Home</a></li>
-						<li><a href="#about" class="smoothScroll"> About</a></li>
-
-						<li><a href="#blog" class="smoothScroll"> Blog</a></li>
-						<li><a href="#contact" class="smoothScroll"> Contact</a></li>
-						<li><a href="post/postList" class="smoothScroll">Admin</a></li>
-				</div>
-				<!--/.nav-collapse -->
-			</div>
-		</div>
-	</div>
-
+<%@ include file="templates/userheader.jsp"%>
+	
 
 
 	<!-- ==== HEADERWRAP ==== -->
-	<div class="container" id="headerwrap" name="home">
+	<div class="container" id="headerwrap" name="home" style="height: 90vh;"  >
 		<header class="clearfix">
 		<h1>
 			<span class="icon icon-shield"></span>
 		</h1>
 		<p>Umut Ates</p>
 		<p>Blog</p>
+		
+
 		</header>
 	</div>
 	<!-- /headerwrap -->
 
 
 
-<section class="section-divider textdivider divider3">
-	<div class="container">
+	<section class="section-divider textdivider wall">
+	<div class="container" name="blog" id="blog">
 
 		<div class="row">
+
+			<br></br> <br></br> <br></br>
 
 			<!-- Blog Post Content Column -->
 			<div class="col-lg-8">
 
 				<%@ include file="templates/post.jsp"%>
 			</div>
+
 			<!-- Blog Sidebar Widgets Column -->
 			<div class="col-md-4">
 
@@ -114,35 +84,74 @@
 				<div class="well">
 					<h4>Arama</h4>
 					<div class="input-group">
-						<input type="text" class="form-control"> <span
-							class="input-group-btn">
-								<button class="btn btn-default" type="button">
-									<span class="glyphicon glyphicon-search"></span>
-								</button>
+						<form method="POST"
+							action="${pageContext.request.contextPath}/Search">
+							<input type="text" name="searchContext" id="searchContext"
+								class="form-control"><span class="input-group-btn">
+									<button class="btn btn-default" type="submit">
+										<span class="glyphicon glyphicon-search"></span>
+									</button>
+						</form>
 						</span>
 					</div>
 					<!-- /.input-group -->
 
 				</div>
-			
+
 
 				<%@ include file="templates/category.jsp"%>
 
-				<!-- Side Widget Well -->
-				<div class="well">
-					<h4>Side Widget Well</h4>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-						Inventore, perspiciatis adipisci accusamus laudantium odit aliquam
-						repellat tempore quos aspernatur vero.</p>
-				</div>
+
 
 			</div>
 
-		</div> 
-		<!-- /.row -->
 
-	
-</div>
+		</div>
+		<div class="col-lg-8">
+		<!-- /.row -->
+		<c:url var="firstUrl" value="/pages/1" />
+		<c:url var="lastUrl" value="/pages/${page.totalPages}" />
+		<c:url var="prevUrl" value="/pages/${currentIndex - 1}" />
+		<c:url var="nextUrl" value="/pages/${currentIndex + 1}" />
+
+		<nav>
+		<ul class="pagination">
+			<c:choose>
+				<c:when test="${currentIndex == 1}">
+					<li class="disabled"><a href="#">İlk Kayıt</a></li>
+					<li class="disabled"><a href="#">Önceki</a></li>
+				</c:when>
+				<c:otherwise>
+					<li><a href="${firstUrl}">İlk Kayıt</a></li>
+					<li><a href="${prevUrl}">Önceki</a></li>
+				</c:otherwise>
+			</c:choose>
+			<c:forEach var="i" begin="${beginIndex}" end="${endIndex}">
+				<c:url var="pageUrl" value="/pages/${i}" />
+				<c:choose>
+					<c:when test="${i == currentIndex}">
+						<li class="active"><a href="${pageUrl}"><c:out
+									value="${i}" /></a></li>
+					</c:when>
+					<c:otherwise>
+						<li><a href="${pageUrl}"><c:out value="${i}" /></a></li>
+					</c:otherwise>
+				</c:choose>
+			</c:forEach>
+			<c:choose>
+				<c:when test="${currentIndex == page.totalPages}">
+					<li class="disabled"><a href="#">&gt;</a></li>
+					<li class="disabled"><a href="#">&gt;&gt;</a></li>
+				</c:when>
+				<c:otherwise>
+					<li><a href="${nextUrl}">Sonraki</a></li>
+					<li><a href="${lastUrl}">Son Kayıt</a></li>
+				</c:otherwise>
+			</c:choose>
+		</ul>
+		</nav>
+		</div>
+	</div>
 	<!-- /.container --> <!-- jQuery --> <script
 		src="<link href="${pageContext.request.contextPath}/resources/js/jquery.js"></script>
     <!-- Bootstrap Core JavaScript -->
@@ -153,9 +162,11 @@
         $("#wrapper").toggleClass("toggled");
     });
     </script>
-	<br></br>
-	<br></br>
-	<section class="section-divider textdivider divider7
+
+
+	
+	
+	<section class="section-divider textdivider wall
 	">
 	<div class="container" id="about" name="about">
 		<br>

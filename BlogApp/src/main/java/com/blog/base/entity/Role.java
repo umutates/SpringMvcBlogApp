@@ -10,13 +10,13 @@ public class Role {
 	@GeneratedValue
 	private Long id;
 	
-	private RoleStatus name;
+	private String name;
 
-	public RoleStatus getName() {
+	public String getName() {
 		return name;
 	}
 
-	public void setName(RoleStatus name) {
+	public void setName(String name) {
 		this.name = name;
 	}
 

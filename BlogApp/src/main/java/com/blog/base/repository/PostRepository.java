@@ -9,6 +9,9 @@ import com.blog.base.entity.Post;
 
 
 public interface PostRepository extends JpaRepository<Post, Long>{
+	
+	List<Post> findByPostTextContains(String searchContext);
+
 	List<Post> findByCategory(Category category);
 
 }
